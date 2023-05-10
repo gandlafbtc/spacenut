@@ -23,7 +23,7 @@ export default class GameOverSceene extends Phaser.Scene {
         this.titleShadowText = this.add.text(253, 203, 'GAME OVER', { font: '42px joystix', color: '#FFA400' });
         this.pointsText = this.add.text(340, 300, 'points:'+ window.points??0, { font: '20px joystix', color: '#9B26B6'});
         this.playMenuText = this.add.text(320, 400, 'play again', { font: '20px joystix', color: this.menu === 'play' ? '#FFA400' : '#aaaaaa' });
-        this.highscoreMenuText = this.add.text(330, 450, 'highscore', { font: '20px joystix', color: this.menu === 'highscore' ? '#FFA400' : '#aaaaaa' });
+        // this.highscoreMenuText = this.add.text(330, 450, 'highscore', { font: '20px joystix', color: this.menu === 'highscore' ? '#FFA400' : '#aaaaaa' });
     }
 
 
@@ -43,8 +43,8 @@ export default class GameOverSceene extends Phaser.Scene {
 
     updateMenu() {
         this.menu = this.menu === 'play' ? 'highscore' : 'play'
-        this.playMenuText.setColor(this.menu === 'play' ? '#FFA400' : '#aaaaaa')
-        this.highscoreMenuText.setColor(this.menu === 'highscore' ? '#FFA400' : '#aaaaaa')
+        // this.playMenuText.setColor(this.menu === 'play' ? '#FFA400' : '#aaaaaa')
+        // this.highscoreMenuText.setColor(this.menu === 'highscore' ? '#FFA400' : '#aaaaaa')
         setTimeout(() => {
             this.refresh = true
         }, 200);
