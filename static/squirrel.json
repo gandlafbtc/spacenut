@@ -1,0 +1,38 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 1, "y": 1, "w": 45, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 7, "w": 43, "h": 45 },
+    "sourceSize": { "w": 52, "h": 52 },
+    "duration": 100
+   },
+   "1": {
+    "frame": { "x": 47, "y": 1, "w": 45, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 7, "w": 43, "h": 45 },
+    "sourceSize": { "w": 52, "h": 52 },
+    "duration": 100
+   },
+   "2": {
+    "frame": { "x": 1, "y": 49, "w": 45, "h": 47 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 7, "w": 43, "h": 45 },
+    "sourceSize": { "w": 52, "h": 52 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "squirrel.png",
+  "format": "RGBA8888",
+  "size": { "w": 92, "h": 96 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "squirrel_walking", "from": 0, "to": 2, "direction": "forward" }
+  ]
+ }
+}
