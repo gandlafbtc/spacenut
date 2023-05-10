@@ -11,16 +11,18 @@ export default class TitleScene extends Phaser.Scene {
     highscoreMenuText: Phaser.GameObjects.Text
     theme: Phaser.Sound.NoAudioSound | Phaser.Sound.HTML5AudioSound | Phaser.Sound.WebAudioSound
     spaceToStartText: Phaser.GameObjects.Text
+    loadingText: Phaser.GameObjects.Text
     constructor() {
         super('title')
     }
     preload() {
+        this.loadingText = this.add.text(300, 300, 'Loading...', { font: '20px joystix', color: '#9B26B6' });
 		this.load.audio('theme', 'audio/theme.mp3')
-
         this.cursors = this.input?.keyboard?.createCursorKeys();
         this.load.image('sky', 'space3.png')
     }
     create() {
+        this.loadingText.destroy()
 		this.theme = this.sound.add('theme')
         this.theme.loop = true
         this.theme.volume = .7 
