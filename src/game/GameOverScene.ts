@@ -10,7 +10,7 @@ export default class GameOverSceene extends Phaser.Scene {
     titleShadowText: Phaser.GameObjects.Text
     playMenuText: Phaser.GameObjects.Text
     highscoreMenuText: Phaser.GameObjects.Text
-
+    cooldown = 5
     constructor() {
         super('gameover')
     }
@@ -19,13 +19,26 @@ export default class GameOverSceene extends Phaser.Scene {
         this.load.image('sky', 'space3.png')
     }
     create() {
+        this.cooldown = 5
         this.titleText = this.add.text(250, 200, 'GAME OVER', { font: '42px joystix', color: '#9B26B6' });
         this.titleShadowText = this.add.text(253, 203, 'GAME OVER', { font: '42px joystix', color: '#FFA400' });
         this.pointsText = this.add.text(340, 300, 'points:'+ window.points??0, { font: '20px joystix', color: '#9B26B6'});
-        this.playMenuText = this.add.text(320, 400, 'play again', { font: '20px joystix', color: this.menu === 'play' ? '#FFA400' : '#aaaaaa' });
+        this.playMenuText = this.add.text(320, 400, `play again (${this.cooldown})`, { font: '20px joystix', color: '#aaaaaa' });
         // this.highscoreMenuText = this.add.text(330, 450, 'highscore', { font: '20px joystix', color: this.menu === 'highscore' ? '#FFA400' : '#aaaaaa' });
+        this.startCooldown()
     }
 
+    startCooldown(){
+        if (this.cooldown>0) {
+            this.playMenuText.setText(`play again (${this.cooldown})`)
+            this.cooldown--
+            setTimeout(()=>{this.startCooldown()}, 1000)
+        }
+        else {
+            this.playMenuText.setText(`play again`)
+            this.playMenuText.setColor('#FFA400') 
+        }
+    }
 
     update() {
         if (this.refresh) {
@@ -36,7 +49,11 @@ export default class GameOverSceene extends Phaser.Scene {
                 this.updateMenu()
             }
             else if (this.cursors.space.isDown) {
-                this.scene.start('start')
+                if (this.cooldown<1) {
+                    this.scene.get('start').scene.restart();
+                    this.scene.stop()
+                    this.scene.manager.update(0,0)
+                }
             }
         }
     }

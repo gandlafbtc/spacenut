@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import { CashuMint, CashuWallet, getDecodedToken, getEncodedToken } from "@cashu/cashu-ts";
 import { keys, mintUrl } from './keys';
+import { nuts } from '../stores/nuts';
 
 
 export default class StartGameScene extends Phaser.Scene {
@@ -69,12 +70,17 @@ export default class StartGameScene extends Phaser.Scene {
 		this.physics.add.collider(this.coin, this.ground)
 		this.physics.add.overlap(this.nut, this.coin, this.collectCoin, null, this)
 		this.physics.add.overlap(this.nut, this.squirrel, this.endGame, null, this)
-		this.spawnItem() 
+		this.spawnItem()
+		this.resetGame()
 	}
 
 	endGame(){
 		this.explosionSound?.play()
 		window.points = this.points
+		this.scene.start('gameover')
+	}
+
+	resetGame() {
 		this.squirrel.setX(600)
 		this.nut.setX(200)
 		this.points = 0 
@@ -82,7 +88,6 @@ export default class StartGameScene extends Phaser.Scene {
 		this.speedBoost = 0
 		this.scoreText.setText("Score: 0")
 		this.squirrel.setVelocityX(0)
-		this.scene.start('gameover')
 	}
 
 	collectCoin(avatar, collectible) {
@@ -175,6 +180,7 @@ export default class StartGameScene extends Phaser.Scene {
 		
 		item.textContent = message
 		if(message !== 'empty nut'){
+			nuts.update(state=>[message,...state])
 			item.classList.add('text-primary')
 		}
 		list?.prepend(item)
@@ -182,7 +188,6 @@ export default class StartGameScene extends Phaser.Scene {
 	receiveNut = async () => {
 		const mint = new CashuMint(mintUrl)
 		const wallet = new CashuWallet(keys, mint)
-
 		try {
 			const {token} = await wallet.receive(this.nutString)
 			const proofs = token.token.map(t=> t.proofs).flat()

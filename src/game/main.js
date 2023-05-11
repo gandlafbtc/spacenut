@@ -7,6 +7,7 @@ import GameOverSceene from './GameOverScene'
 const config = {
 	type: Phaser.AUTO,
 	parent: 'app',
+	pixelArt: true,
 	width: 800,
 	height: 600,
 	physics: {
