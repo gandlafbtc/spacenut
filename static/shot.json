@@ -1,0 +1,38 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 1, "y": 1, "w": 34, "h": 12 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 10 },
+    "sourceSize": { "w": 32, "h": 10 },
+    "duration": 50
+   },
+   "1": {
+    "frame": { "x": 1, "y": 14, "w": 34, "h": 12 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 10 },
+    "sourceSize": { "w": 32, "h": 10 },
+    "duration": 50
+   },
+   "2": {
+    "frame": { "x": 1, "y": 27, "w": 34, "h": 12 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 10 },
+    "sourceSize": { "w": 32, "h": 10 },
+    "duration": 50
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "shot.png",
+  "format": "RGBA8888",
+  "size": { "w": 36, "h": 40 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "shot_fly", "from": 0, "to": 2, "direction": "forward" }
+  ]
+ }
+}
