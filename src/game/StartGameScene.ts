@@ -112,6 +112,7 @@ export default class StartGameScene extends Phaser.Scene {
 		this.squirrelLives = 5
 		this.squirrel.setVelocity(0)
 		this.scoreText.setText("Score: 0")
+		this.bulletText.setText("0x")
 		this.squirrel.setVelocityX(0)
 		if (this.timerInterval) {
 			clearInterval(this.timerInterval)
@@ -233,15 +234,17 @@ export default class StartGameScene extends Phaser.Scene {
 			this.nut.flipX = true
 			this.nut.setVelocityX(-(100 + this.speedBoost))
 		}
-		else if (this.cursors.space.isDown) {
+		
+		else {
+			this.nut.setVelocityX(0)
+		}
+
+		if (this.cursors.space.isDown) {
 			if (this.hasGun && this.isLoaded && this.bullets) {
 				this.fireGun()
 				this.isLoaded = false
 				setTimeout(() => { this.isLoaded = true }, 200)
 			}
-		}
-		else {
-			this.nut.setVelocityX(0)
 		}
 		if (this.hasGun) {
 			this.nutGun.y = this.nut.y
@@ -294,9 +297,9 @@ export default class StartGameScene extends Phaser.Scene {
 		const item = document.createElement('li')
 
 		item.textContent = message
-		if (message !== 'empty nut') {
-			nuts.update(state => [message, ...state])
-			item.classList.add('text-primary')
+		if (message && message !== 'empty nut') {
+				nuts.update(state => [message, ...state])
+				item.classList.add('text-primary')
 		}
 		list?.prepend(item)
 	}

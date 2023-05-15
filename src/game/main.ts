@@ -4,12 +4,20 @@ import StartGameScene from './StartGameScene'
 import TitleScene from './TitleScene'
 import GameOverSceene from './GameOverScene'
 
-const config = {
+
+export default new Phaser.Game({
 	type: Phaser.AUTO,
 	parent: 'app',
 	pixelArt: true,
 	width: 800,
 	height: 600,
+	antialias:false,
+	antialiasGL:false,
+	fps:{
+		target:30,
+		smoothStep: true
+	},
+	roundPixels: true,
 	physics: {
 		default: 'arcade',
 		arcade: {
@@ -17,6 +25,4 @@ const config = {
 		},
 	},
 	scene: [ TitleScene, StartGameScene, GameOverSceene,],
-}
-
-export default new Phaser.Game(config)
+})

@@ -10,7 +10,7 @@ Help this game win the geyser.fund gaming grant
 </a>
   <div class="items-center justify-center text-center flex flex-col gap-3 bg-slate-950 h-40 bg-gradient-to-b from-slate-950 to-black">
 
-      <h1 class="bg-black text-7xl text-transparent bg-clip-text bg-gradient-to-br from-secondary to-primary"> 
+      <h1 class="bg-black text-5xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-br from-secondary to-primary"> 
           Spacenut
         </h1>
     </div>
